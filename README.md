@@ -24,3 +24,23 @@ this can be achieved with the command below
  This can be achieved with the command below
  : GRANT ALL ON test_db.* TO 'remote_user'@'%' WITH GRANT OPTION;
  the command above grants all priviledges on the database to the 'remote user'
+# next we Flush the privileges with the command below
+: FLUSH PRIVILEGES;
+now our database is created
+# configure the MYSQL to allow connection from remote hosts
+run the command: sudo vi /etc/mysql/mysql.conf.d/mysqld.cnf
+then replace the bind ip address from Replace ‘127.0.0.1’ to ‘0.0.0.0 as shown below this is to allow coonection to the database from any ip source
+<img width="575" alt="Screen Shot 2022-09-17 at 1 48 46 AM" src="https://user-images.githubusercontent.com/112595648/190833976-33bb6e50-f9ae-41a1-a1a2-75529422772a.png">
+
+# REstart the MYSQL SERVICE
+this can be done with the command
+: sudo systemctl restart mysql
+
+# Connect to MYSQL Server from Client
+next is to connect to our database server from the client with the command : sudo mysql -u remote_user -h 172.31.22.172 -p 
+enter the password when prompted and if we IN... as shown below
+<img width="559" alt="Screen Shot 2022-09-17 at 2 02 11 AM" src="https://user-images.githubusercontent.com/112595648/190834420-f5f5d86b-dba2-4533-b83a-5a19435fb40a.png">
+Performing sql queries like : Show databases;
+<img width="568" alt="Screen Shot 2022-09-17 at 2 04 03 AM" src="https://user-images.githubusercontent.com/112595648/190834516-6c015330-b347-4fe0-88c2-29134f6a83ec.png">
+
+
